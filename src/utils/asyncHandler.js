@@ -1,6 +1,8 @@
 const wrapAsync = (requestHandler) => {
-  (req, res, next) => {
-    Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
+  return function (req, res, next) {
+    requestHandler(req, res, next).catch((err) => {
+      next(err);
+    });
   };
 };
 
