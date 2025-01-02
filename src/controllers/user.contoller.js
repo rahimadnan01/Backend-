@@ -2,6 +2,7 @@ import { wrapAsync } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
 import { uploadCloudinary } from "../utils/cloudinary.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerUser = wrapAsync(async (req, res) => {
   const { username, email, fullname, password } = req.body;
@@ -49,6 +50,8 @@ const registerUser = wrapAsync(async (req, res) => {
   if (!createdUser) {
     throw new ApiError(500, "Something went wrong while creating a user");
   }
+
+  res.status(201).json(200, createdUser, "User created successfully");
 });
 
 export { registerUser };
