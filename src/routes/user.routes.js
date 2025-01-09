@@ -4,7 +4,7 @@ import {
   loginUser,
   logoutUser,
   refreshAccessToken,
-} from "../controllers/user.contoller.js";
+} from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middelware.js";
 import verifyJWT from "../middlewares/auth.middelware.js";
 const router = Router();
